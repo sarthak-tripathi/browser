@@ -110,6 +110,40 @@
     </div>
     <script>
         // Q Make the filter work
+        let select = document.querySelector("select");
+        select.addEventListener("change", function(){
+            // console.log(select.value);
+            //hide something
+            // let h1 = document.querySelector("h1");
+            // h1.style.display="none";
+
+            let category = select.value;
+            let movieLists = document.querySelectorAll(".movies");
+
+            if(category == "none"){
+                //show all
+                for(let i = 0; i < movieLists.length; i++){
+                    let ptag = movieLists[i].children[1];
+                    movieLists[i].style.display = "block";
+                }
+
+            }else{
+                //agar none nhi hai to sabko hide kardo
+                for(let i= 0; i < movieLists.length; i++){
+                    let ptag = movieLists[i].children[1];
+                    //get attribute
+                    let cCategory = ptag.getAttribute("data-category");
+                    if(cCategory != category){
+                        // style.none disapper -> from the page 
+                        movieLists[i].style.display = " none";
+                    }else{
+                        //show it
+                        movieLists[i].style.display = " block ";
+                    }
+                }
+            }
+
+        })
         
         
 
